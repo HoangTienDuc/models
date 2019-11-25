@@ -33,12 +33,12 @@ def get_model(ctx, model):
     model.set_params(arg_params, aux_params)
     return model
 
-# # Download pretrain face detecter models
-# for i in range(4):
-#     mx.test_utils.download(dirname='mtcnn-model', url='https://s3.amazonaws.com/onnx-model-zoo/arcface/mtcnn-model/det{}-0001.params'.format(i+1))
-#     mx.test_utils.download(dirname='mtcnn-model', url='https://s3.amazonaws.com/onnx-model-zoo/arcface/mtcnn-model/det{}-symbol.json'.format(i+1))
-#     mx.test_utils.download(dirname='mtcnn-model', url='https://s3.amazonaws.com/onnx-model-zoo/arcface/mtcnn-model/det{}.caffemodel'.format(i+1))
-#     mx.test_utils.download(dirname='mtcnn-model', url='https://s3.amazonaws.com/onnx-model-zoo/arcface/mtcnn-model/det{}.prototxt'.format(i+1))
+# Download pretrain face detecter models
+for i in range(4):
+    mx.test_utils.download(dirname='mtcnn-model', url='https://s3.amazonaws.com/onnx-model-zoo/arcface/mtcnn-model/det{}-0001.params'.format(i+1))
+    mx.test_utils.download(dirname='mtcnn-model', url='https://s3.amazonaws.com/onnx-model-zoo/arcface/mtcnn-model/det{}-symbol.json'.format(i+1))
+    mx.test_utils.download(dirname='mtcnn-model', url='https://s3.amazonaws.com/onnx-model-zoo/arcface/mtcnn-model/det{}.caffemodel'.format(i+1))
+    mx.test_utils.download(dirname='mtcnn-model', url='https://s3.amazonaws.com/onnx-model-zoo/arcface/mtcnn-model/det{}.prototxt'.format(i+1))
 
 
 # config face detecter model
@@ -47,6 +47,7 @@ if len(mx.test_utils.list_gpus())==0:
     ctx = mx.cpu()
 else:
     ctx = mx.gpu(0)
+print("ctx: ", ctx)
 # Configure face detector
 det_threshold = [0.6,0.7,0.8]
 # mtcnn_path = os.path.join(os.path.dirname('__file__'), 'mtcnn-model')
@@ -135,12 +136,12 @@ def get_feature(model,aligned):
 
 # Download image and prepare onnx model
 
-# # Download first image
-# mx.test_utils.download('https://s3.amazonaws.com/onnx-model-zoo/arcface/player1.jpg')
-# # Download second image
-# mx.test_utils.download('https://s3.amazonaws.com/onnx-model-zoo/arcface/player2.jpg')
-# # Download onnx model
-# mx.test_utils.download('https://s3.amazonaws.com/onnx-model-zoo/arcface/resnet100.onnx')
+# Download first image
+mx.test_utils.download('https://s3.amazonaws.com/onnx-model-zoo/arcface/player1.jpg')
+# Download second image
+mx.test_utils.download('https://s3.amazonaws.com/onnx-model-zoo/arcface/player2.jpg')
+# Download onnx model
+mx.test_utils.download('https://s3.amazonaws.com/onnx-model-zoo/arcface/resnet100.onnx')
 # Path to ONNX model
 # model_name = '/home/tienduchoang/Videos/arcface/models/vision/body_analysis/arcface/models/resnet100.onnx'
 model_name = '/home/tienduchoang/Videos/arcface/models/arcface/resnet100.onnx'
